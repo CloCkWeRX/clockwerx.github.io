@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daniel O'Connor — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+/* ---- PAGE & PRINT SETTINGS ---- */
+@page {
+  size: A4;
+  margin: 18mm;
+}
+@media print {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  .dates {
+    padding-right: 2em;
+  }
+}
+@media screen {
+  body {
+    margin: 3em;
+    padding: 3em;
+  }
+}
+html, body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-family: "Raleway", "Helvetica Neue", Arial, sans-serif;
+  font-optical-sizing: auto;
+  color: #222;
+  background: #fff;
+}
+
+/* ---- LAYOUT GRID ---- */
+.sheet {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 22px;
+  position: relative;
+}
+
+/* Accent bars */
+.accent-top, .accent-bottom {
+  position: absolute;
+  left: 0;
+  width: 60mm;
+  height: 6px;
+  background: #2aa66a;
+  border-radius: 3px;
+}
+.accent-top { top: -12mm; }
+.accent-bottom { bottom: -12mm; }
+
+/* ---- SIDEBAR ---- */
+.sidebar {
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+h1 {
+   font-family: "Bebas Neue", sans-serif;
+  font-weight: 000;
+  font-style: normal;
+}
+.name {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1f9a70;
+  margin-bottom: 4px;
+}
+.role {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.label {
+  font-size: 10px;
+  color: #7b7b7b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.section {
+  margin: 14px 0;
+}
+.sidebar p {
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 3px 0;
+}
+.skills-list {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* ---- MAIN CONTENT ---- */
+.main {
+  border-left: 1px solid #e3e3e3;
+  padding-left: 20px;
+}
+.section-title {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7b7b7b;
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+.job-entry {
+  margin-bottom: 18px;
+  page-break-inside: avoid;
+}
+.job-entry h3 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 700;
+}
+.company {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+.dates {
+  float: right;
+  font-size: 11px;
+  color: #888;
+}
+.job-desc {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Lists inside job sections */
+.job-desc ul {
+  margin: 3em 1.5em;
+  padding: 0;
+
+}
+.job-desc li {
+  margin: 2px 0;
+  font-size: 12px;
+}
+
+/* Prevent awkward breaks */
+.job-entry, .section { page-break-inside: avoid; }
+
+/* Small screen preview */
+@media screen and (max-width: 900px) {
+  .sheet { grid-template-columns: 1fr; }
+  .main { border-left: none; padding-left: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sheet">
+
+  <div class="accent-top"></div>
+  <div class="accent-bottom"></div>
+
+  <!-- ===== LEFT SIDEBAR ===== -->
+  <aside class="sidebar">
+    <h1 class="name">Daniel O'Connor</h1>
+    <div class="role">Technical Leader</div>
+
+    <div class="section">
+      <div class="label">Contact</div>
+      <p>Email: <a href="mailto:daniel.oconnor@gmail.com?subject=Hello+hello!">daniel.oconnor@gmail.com</a></p>
+      <p>Github: <a href="https://github.com/CloCkWeRX" target="_blank">@CloCkWeRX</a></p>
+    </div>
+
+    <div class="section">
+      <div class="label">About</div>
+      <p>
+        I’m a technical leader, implementation specialist and senior software engineer across
+        the health and real estate/mortgage industry domains with enterprise customers.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="label">Business</div>
+      <div class="skills-list">
+        <p><em>Product management</em></p>
+        <p>Benefits realisation, project and portfolio management, business analysis, solution architecture, governance and compliance</p>
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="label">Technical</div>
+      <div class="skills-list">
+        <p><em>An ever growing list of stacks...</em></p>
+        <p><small>PHP, Java, Ruby, Python, C#, SOLID, XML, XSLT, JSON, RDF, OWL, XSD, Turtle, HTML5, CSS/SASS, JS, Ember.js, Vue, SQL, MySQL, Postgres, Oracle, SQL Server, Node.js, Docker, Rails, Sinatra, AWS, Linux, Docker, Chef, Vagrant, VMware, AWS, GCP, gRPC, graphql, SPARQL, SASS/LESS/Modern CSS, Elixir, Phoenix</small></p>
+        <p><small>And lets not forget a high degree of LLM wrangling and agentic coding for the side projects!</small></p>
+      </div>
+    </div>
+
+
+
+    <div class="section">
+      <div class="label">Industry Experience</div>
+      <p>Valuation, Mortgage, Operational Centres, Call Centre, Banking, Finance, Real Estate, Property, Health, PAS/EMR, Allied Health, Private Hospital</p>
+    </div>
+
+    <div class="section">
+      <div class="label">Education & Certifications</div>
+      <p>
+        Adelaide Institute of TAFE / iCarnegie<br/>
+        Advanced Diploma of IT – Software Engineering (2003–2004)<br/>
+        Advanced Diploma of Project Management (2010)<br/>
+      </p>
+    </div>
+
+
+    <div class="section">
+      <div class="label">Open Source and Advocacy</div>
+      <p>
+        Contributor to and maintainer of a large number of projects, notable ones include Fat Free CRM, Growstuff.org and many, many home assistant plugins.
+      </p>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <div class="section-title">Employment History</div>
+
+     <!-- Clintel Systems -->
+    <div class="job-entry">
+      <h3>Backend Engineer <span class="dates">Oct 2025-Current</span></h3>
+      <div class="company">Coinjar Australia</div>
+      <div class="job-desc">
+        <p>Working with a core team of expert individuals doing big things with distributed systems in an evolving fintech space.</p>
+        <ul>
+          <li>Delivery of key MiCAR conformance milestones</li>
+          <li>Rails at scale: a distributed architecture serving 600,000+ customers; integrating with a diverse and ever evolving set of integration partners across four regulated markets.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Clintel Systems -->
+    <div class="job-entry">
+      <h3>Development Manager <span class="dates">2021–Oct 2025</span></h3>
+      <div class="company">Clintel Systems Pty Ltd</div>
+      <div class="job-desc">
+        <p>What started as a hands-on development role encompassing team leadership evolved into a multi faceted implementation, quality assurance, risk management, and product management role within the core management team.</p>
+        <p>This role encompassed all aspects of delivery of complex health projects, often resulting in being the boots on the ground and key accountable individual for our client's success from project initiation to go live and beyond.</p>
+
+        <ul>
+          <li>Implementation and ownership of ISO27001 policies and practices, whole of organisation security and governance</li>
+          <li>Successful deployment of clinical workflows to hospitals, clinics, universities, telehealth providers in a large and varied number of clinical specialities (mental health, paediatric, oncology and much more)</li>
+          <li>Implementation and ongoing conformance to Medicare, MyHealthRecord, ePrescribing standards</li>
+          <li>Managed and empowered a wide and diverse team, cutting across development and operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Herron Todd White — Business Analyst -->
+    <div class="job-entry">
+      <h3>Technical Business Analyst <span class="dates">2019–2021</span></h3>
+      <div class="company">Herron Todd White Australia</div>
+      <div class="job-desc">
+        Leadership-focused analyst role during organisational scaling, combining product, project
+        management, integration and quality responsibilities.
+
+        <ul>
+          <li>Led integrations with major banking clients (Hometrack Australia, Valocity)</li>
+          <li>Managed overhaul of PropertyPro 2020 standard adoption</li>
+          <li>Removed legacy backend infrastructure with zero user impact</li>
+          <li>Provided project, quality & risk management guidance</li>
+          <li>Responsible for autonomous development squad (3–5 devs)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Herron Todd White — Solution Architect -->
+    <div class="job-entry">
+      <h3>Solution Architect <span class="dates">2013–2019</span></h3>
+      <div class="company">Herron Todd White Australia</div>
+      <div class="job-desc">
+        Designed & developed a Service-Oriented Architecture replacing Lotus Notes systems. Led
+        integrations, team mentoring, and multi-region delivery supporting 800+ staff and 250k+ yearly
+        valuation processes.
+
+        <ul>
+          <li>Successfully delivered project phases to all users (2013–2015)</li>
+          <li>Enabled admin staff to migrate with positive feedback</li>
+          <li>Established cross-team project & risk practices</li>
+          <li>Avoided major disruptions through incremental change</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Connexion Systems -->
+    <div class="job-entry" style="display: none">
+      <h3>Software Developer (Contract) <span class="dates">2013</span></h3>
+      <div class="company">Connexion Systems</div>
+      <div class="job-desc">
+        Delivered a Benefits Realisation tool used by NSW & QLD government agencies.
+      </div>
+    </div>
+
+    <!-- University of Adelaide -->
+    <div class="job-entry" style="display: none">
+      <h3>Software Developer (Contract) <span class="dates">2012–2013</span></h3>
+      <div class="company">University of Adelaide</div>
+      <div class="job-desc">
+        Delivered internal Ruby on Rails applications supporting research reporting.
+      </div>
+    </div>
+
+    <!-- RP Data -->
+    <div class="job-entry">
+      <h3>Applications Architect <span class="dates">2011–2012</span></h3>
+      <div class="company">RP Data Pty Ltd</div>
+      <div class="job-desc">
+        <ul>
+          <li>Integrated legacy platforms across enterprise teams</li>
+          <li>Drove consumer strategy through ValEx/MyRP</li>
+          <li>Delivered business intelligence capabilities</li>
+          <li>Major contributor to LIXI standards work</li>
+          <li>Championed data services layer</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Valuation Exchange -->
+    <div class="job-entry">
+      <h3>Senior Developer <span class="dates">2005–2011</span></h3>
+      <div class="company">Valuation Exchange</div>
+      <div class="job-desc">
+        <ul>
+          <li>Grew platform into market leader acquired by RP Data</li>
+          <li>Managed small development & QA teams</li>
+          <li>Delivered major projects (CBA, Bankwest, NAB)</li>
+          <li>Led web services integrations with multiple vendors</li>
+          <li>Key resource during acquisition transition</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
