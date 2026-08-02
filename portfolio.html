@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel O'Connor — Open Source</title>
+<style>
+  :root{
+    --bg: #ffffff;
+    --surface: #fafafa;
+    --ink: #1c1c1c;
+    --muted: #5c5c5c;
+    --muted-2: #8a8a8a;
+    --line: #e3e3e1;
+    --link: #1a54a8;
+    --max: 920px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:var(--link); text-decoration:underline; text-decoration-color:rgba(26,84,168,0.35); }
+  a:hover{ text-decoration-color:var(--link); }
+  a:focus-visible{ outline:2px solid var(--link); outline-offset:2px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+  .wrap-narrow{ max-width:760px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Header ---------- */
+  header{ padding:64px 0 40px; border-bottom:1px solid var(--line); }
+  header .wrap-narrow{ padding:0 24px; }
+  h1{ font-size:1.9rem; font-weight:600; margin:0 0 4px; letter-spacing:-0.01em; }
+  .role{ color:var(--muted); font-size:1.05rem; margin:0 0 22px; }
+  .meta-line{ color:var(--muted); font-size:0.94rem; display:flex; flex-wrap:wrap; gap:4px 16px; }
+  .meta-line span{ white-space:nowrap; }
+  .summary{ margin-top:22px; color:var(--ink); max-width:64ch; font-size:0.98rem; }
+
+  .stat-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:26px; }
+  .stat b{ display:block; font-size:1.4rem; font-weight:600; }
+  .stat span{ display:block; font-size:0.82rem; color:var(--muted-2); margin-top:2px; }
+
+  /* ---------- Sections ---------- */
+  section{ padding:48px 0; }
+  .section-head{ max-width:64ch; margin-bottom:8px; }
+  h2{ font-size:1.15rem; font-weight:600; margin:0 0 6px; text-transform:uppercase; letter-spacing:0.04em; }
+  .section-desc{ color:var(--muted); font-size:0.94rem; max-width:62ch; margin:0 0 40px; }
+
+  hr{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:0;
+  }
+
+  /* ---------- Feature rows (zigzag) ---------- */
+  .feature-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:48px;
+    align-items:center;
+    padding:36px 0;
+  }
+  .feature-row + .feature-row{ border-top:1px solid var(--line); }
+  .feature-row.reverse .feature-visual{ order:-1; }
+
+  .feature-text .kicker{
+    font-size:0.76rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--muted-2);
+    margin:0 0 8px;
+  }
+  .feature-text h3{
+    font-size:1.3rem;
+    font-weight:600;
+    margin:0 0 10px;
+  }
+  .feature-text h3 a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .feature-text h3 a:hover{ color:var(--link); border-bottom-color:var(--link); }
+  .feature-text p{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin:0 0 16px;
+    max-width:44ch;
+  }
+  .feature-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 10px;
+    font-size:0.8rem;
+  }
+  .pill{
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:3px 9px;
+    color:var(--muted);
+  }
+
+  .feature-visual{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px;
+    text-align:center;
+  }
+  .feature-visual .big-stat{
+    font-size:2.6rem;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:-0.01em;
+  }
+  .feature-visual .big-stat-label{
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted-2);
+    margin-top:8px;
+  }
+  .feature-visual .sub-stats{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  .feature-visual .sub-stats b{ display:block; color:var(--ink); font-size:1.05rem; font-weight:600; }
+
+  /* ---------- Compact grid (everything else) ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:32px;
+  }
+  .card{
+    background:var(--bg);
+    padding:20px;
+  }
+  .card-name{ font-weight:600; font-size:0.92rem; margin-bottom:4px; }
+  .card-name a{ color:var(--ink); }
+  .card-desc{ color:var(--muted); font-size:0.82rem; margin-bottom:12px; min-height:2.6em; }
+  .card-stats{ font-size:0.78rem; color:var(--muted-2); display:flex; justify-content:space-between; }
+  .card-stats b{ color:var(--ink); font-weight:600; }
+  .tag{
+    font-size:0.68rem;
+    color:var(--muted-2);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:1px 5px;
+    margin-left:6px;
+    font-weight:400;
+  }
+
+  /* ---------- Focus / achievements ---------- */
+  ul.focus{ margin:0; padding-left:20px; color:var(--muted); font-size:0.94rem; max-width:64ch; }
+  ul.focus li{ margin-bottom:10px; }
+  ul.focus li:last-child{ margin-bottom:0; }
+  ul.focus strong{ color:var(--ink); }
+
+  .badges{ display:flex; flex-wrap:wrap; gap:8px 10px; }
+  .badge{ font-size:0.82rem; color:var(--muted); border:1px solid var(--line); border-radius:3px; padding:5px 10px; }
+  .badge b{ color:var(--ink); font-weight:600; }
+
+  footer{ padding:32px 0 56px; font-size:0.85rem; color:var(--muted-2); border-top:1px solid var(--line); }
+  footer a{ color:var(--muted); }
+
+  @media (max-width:760px){
+    .feature-row{ grid-template-columns:1fr; gap:20px; padding:28px 0; }
+    .feature-row.reverse .feature-visual{ order:0; }
+    .grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:520px){
+    .grid{ grid-template-columns:1fr; }
+    header{ padding:44px 0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap-narrow">
+    <h1>Daniel O'Connor</h1>
+    <p class="role">Open Source — CloCkWeRX</p>
+    <div class="meta-line">
+      <span>Adelaide, Australia</span>
+      <span><a href="http://danieloconnor.dev">danieloconnor.dev</a></span>
+      <span><a href="https://github.com/CloCkWeRX">github.com/CloCkWeRX</a></span>
+    </div>
+  </div>
+</header>
+
+<section id="major">
+  <div class="wrap-narrow section-head">
+    <h2>Collaborations and Communities</h2>
+    <p class="section-desc"></p>
+  </div>
+
+  <div class="wrap">
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <p class="kicker">fatfreecrm</p>
+        <h3><a href="https://github.com/fatfreecrm/fat_free_crm">fat_free_crm</a></h3>
+        <p>A Ruby on Rails CRM platform. By far the most-starred project O'Connor is affiliated with, and the clearest signal of long-running Rails work carried out as part of a wider team.</p>
+        <div class="feature-meta">
+          <span class="pill">Ruby</span>
+          <span class="pill">Rails</span>
+          <span class="pill">CRM</span>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="big-stat">★ 3.6k</div>
+        <div class="big-stat-label">Stars</div>
+        <div class="sub-stats">
+          <div><b>1.3k</b>Forks</div>
+          <div><b>Ruby</b>Language</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <p class="kicker">Growstuff</p>
+        <h3><a href="https://github.com/Growstuff/growstuff">growstuff</a></h3>
+        <p>An open data platform for small-scale food growers, built in Ruby. Part of O'Connor's broader open-data advocacy — civic and community data made structured and reusable.</p>
+        <div class="feature-meta">
+          <span class="pill">Ruby</span>
+          <span class="pill">Open data</span>
+          <span class="pill">Community</span>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="big-stat">★ 473</div>
+        <div class="big-stat-label">Stars</div>
+        <div class="sub-stats">
+          <div><b>210</b>Forks</div>
+          <div><b>Ruby</b>Language</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <p class="kicker">ha-tuya-ble</p>
+        <h3><a href="https://github.com/ha-tuya-ble/ha_tuya_ble">ha_tuya_ble</a></h3>
+        <p>Home Assistant support for Tuya BLE devices. Consolidates several previously scattered community forks into one actively maintained integration — recent, active home automation work.</p>
+        <div class="feature-meta">
+          <span class="pill">Python</span>
+          <span class="pill">Home Assistant</span>
+          <span class="pill">IoT</span>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="big-stat">★ 69</div>
+        <div class="big-stat-label">Stars</div>
+        <div class="sub-stats">
+          <div><b>57</b>Forks</div>
+          <div><b>Python</b>Language</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<section id="other">
+  <div class="wrap-narrow section-head">
+    <h2>Other Projects</h2>
+    <p class="section-desc">Various one-off experiments, </p>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-name"><a href="https://github.com/CloCkWeRX/tipsy">tipsy</a><span class="tag">Fork</span></div>
+        <div class="card-desc">Fork of the tipsy jQuery tooltip plugin, with several outstanding pull requests merged in.</div>
+        <div class="card-stats"><span><b>★ 38</b></span><span>9 forks</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">node-samsung-airconditioner<span class="tag">Archived</span></div>
+        <div class="card-desc">JavaScript library for local control of Samsung air conditioner units.</div>
+        <div class="card-stats"><span><b>★ 31</b></span><span>24 forks</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">citrix-receiver-ubuntu-fixed</div>
+        <div class="card-desc">Fixed version of Citrix Receiver 13.0 for Ubuntu 13.10 64-bit.</div>
+        <div class="card-stats"><span><b>★ 8</b></span><span>1 fork</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">chef-mosquitto</div>
+        <div class="card-desc">A Chef cookbook for Mosquitto, the MQTT message broker.</div>
+        <div class="card-stats"><span><b>★ 7</b></span><span>8 forks</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">sdo</div>
+        <div class="card-desc">A fork of PECL's SCA SDO extension, updated for PHP 5.3+ compatibility.</div>
+        <div class="card-stats"><span><b>★ 6</b></span><span>11 forks</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">node-limitlessLED</div>
+        <div class="card-desc">JavaScript control library for LimitlessLED smart lighting.</div>
+        <div class="card-stats"><span><b>★ 6</b></span><span>1 fork</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap-narrow">
+    <h2>Focus areas</h2>
+    <p class="section-desc">Across 377 repositories, a few consistent threads stand out:</p>
+    <ul class="focus">
+      <li><strong>Organisation-scale Ruby on Rails</strong> — sustained contributions to fat_free_crm and Growstuff, both built and maintained collaboratively.</li>
+      <li><strong>Civic &amp; open data</strong> — Australian bushfire GeoRSS aggregation, road-closure and address indexes for government open-data portals, and planning-alert scrapers.</li>
+      <li><strong>Home automation</strong> — local integrations for Samsung air conditioners, LimitlessLED lighting, and Home Assistant components for Tuya BLE devices.</li>
+      <li><strong>PHP / PEAR-era tooling</strong> — package and build utilities (pear-to-composer, Console_Table2, XML_Parser2) from the PHP PEAR ecosystem.</li>
+    </ul>
+  </div>
+</section>
+
+
+<footer class="wrap-narrow">
+  Data pulled from the GitHub REST API, August 2026 · <a href="https://github.com/CloCkWeRX">github.com/CloCkWeRX</a> · <a href="http://danieloconnor.dev">danieloconnor.dev</a>
+</footer>
+
+</body>
+</html>
